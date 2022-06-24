@@ -1,7 +1,6 @@
-FROM alpine:3.15 AS build
+FROM nginx:alpine
 
-RUN apk add wget && wget -O index.html https://feather.wiki/builds/FeatherWiki_Dove.html
+COPY index.html /usr/share/nginx/html
 
-FROM nginx
-
-COPY --from=build index.html /usr/share/nginx/html
+#make bind mount more user friendly
+RUN ln -s /usr/share/nginx/html /data
