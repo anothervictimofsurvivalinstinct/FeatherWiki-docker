@@ -17,7 +17,7 @@ Ya need docker
 
 - Chickadee - smallest - Markdown editor
 
-3. `docker build -t victim/featherwiki`
+3. `docker build -t victim/featherwiki .`
 
 4. `docker run --name=featherwiki -d -p 8000:80 -v /path/to/your/data:/data victim/featherwiki`
 
