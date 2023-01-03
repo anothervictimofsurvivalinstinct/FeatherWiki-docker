@@ -1,6 +1,9 @@
-FROM nginx:alpine
+FROM caddy:2-builder AS builder
 
-COPY index.html /usr/share/nginx/html
+RUN xcaddy build --with github.com/mholt/caddy-webdav
+        
+FROM caddy:2-alpine
 
-#make bind mount more user friendly
-RUN ln -s /usr/share/nginx/html /data
+COPY --from=builder /usr/bin/caddy /usr/bin/caddy
+
+COPY Caddyfile /etc/caddy/Caddyfile
