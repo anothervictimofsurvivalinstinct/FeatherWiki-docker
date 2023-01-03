@@ -1,6 +1,8 @@
 # FeatherWiki-docker
 Docker container for: https://codeberg.org/Alamantus/FeatherWiki an extra small self-contained wiki
 
+Uses the server version so that you can save directly instead of the old way of downloading > replace > refresh
+
 ### Pre Reqs
 
 Ya need docker
@@ -9,16 +11,10 @@ Ya need docker
 
 1. Clone this repo
 
-2. Change the file name to index.html for the one you would like to use
+2. Change the defaults in the Caddyfile to match your needs
 
-- Dove - small - WYSIWYG && Markdown editor
+3. `docker build -t victim/featherwiki-docker .`
 
-- Finch - smaller - WYSIWYG editor
+4. `docker run --name=featherwiki-docker -d -p 80:80 -p 443:443 -p 443:443/udp -v /<Path to file>/index.html:/srv -v caddy_data:/data caddyfeather`
 
-- Chickadee - smallest - Markdown editor
-
-3. `docker build -t victim/featherwiki .`
-
-4. `docker run --name=featherwiki -d -p 8000:80 -v /path/to/your/data:/data victim/featherwiki`
-
-### When you save your wiki it will prompt you to download it and you will need to make sure to save it to your data directory replacing the index.html, or move the old to save for backup everytime then refresh the page.
+5. Go to http://<YOUR IP HERE>:80 and away you go
