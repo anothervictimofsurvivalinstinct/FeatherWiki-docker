@@ -15,6 +15,6 @@ Ya need docker
 
 3. `docker build -t victim/featherwiki-docker .`
 
-4. `docker run --name=featherwiki-docker -d -p 80:80 -p 443:443 -p 443:443/udp -v /<Path to file>/site:/srv -v caddy_data:/data victim/featherwiki-docker`
+4. `docker run --name=featherwiki-docker --restart always -d -p 80:80 -v /<Path to file>/site:/srv -v caddy_data:/data victim/featherwiki-docker`
 
 5. Go to http://(YOUR IP HERE):80 and away you go
