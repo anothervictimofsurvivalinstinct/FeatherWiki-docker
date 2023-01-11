@@ -1,3 +1,5 @@
 FROM caddy:2-alpine
 
+#change 'test' below with your password to get a caddy provided hash
+
 RUN caddy hash-password --plaintext test
